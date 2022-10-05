@@ -1,0 +1,54 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="article">
+      <h2 data-cy="articleDetailsHeading"><span jhiTranslate="samagricoleApp.article.detail.title">Article</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ article.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="samagricoleApp.article.code">Code</span></dt>
+        <dd>
+          <span>{{ article.code }}</span>
+        </dd>
+        <dt><span jhiTranslate="samagricoleApp.article.libelle">Libelle</span></dt>
+        <dd>
+          <span>{{ article.libelle }}</span>
+        </dd>
+        <dt><span jhiTranslate="samagricoleApp.article.pUHT">P UHT</span></dt>
+        <dd>
+          <span>{{ article.pUHT }}</span>
+        </dd>
+        <dt><span jhiTranslate="samagricoleApp.article.tVA">T VA</span></dt>
+        <dd>
+          <span>{{ article.tVA | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="samagricoleApp.article.pUTTC">P UTTC</span></dt>
+        <dd>
+          <span>{{ article.pUTTC }}</span>
+        </dd>
+        <dt><span jhiTranslate="samagricoleApp.article.categorie">Categorie</span></dt>
+        <dd>
+          <div *ngIf="article.categorie">
+            <a [routerLink]="['/categorie-my-suffix', article.categorie.id, 'view']">{{ article.categorie.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Retour</span>
+      </button>
+
+      <button type="button" [routerLink]="['/article-my-suffix', article.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editer</span>
+      </button>
+    </div>
+  </div>
+</div>
